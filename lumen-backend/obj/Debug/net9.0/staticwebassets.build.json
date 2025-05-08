@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "6L2hfdwgdZbLmVgfEjUO++KrxW70+OPgk0lMhiBo8wI=",
+  "Source": "lumen-backend",
+  "BasePath": "_content/lumen-backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
