@@ -1,4 +1,73 @@
-@lumen_backend_HostAddress = http://localhost:5222
+@lumen_backend_HostAddress = http://localhost:5029
 
+### Filme abrufen (alle)
+GET {{lumen_backend_HostAddress}}/api/filme HTTP/1.1
+Accept: application/json
 
 ###
+@lumen_backend_HostAddress = http://localhost:5029
+@FilmId = 1
+@VorstellungId = 1
+@ReservationId = 1
+
+### Filme abrufen (alle)
+GET {{lumen_backend_HostAddress}}/api/filme HTTP/1.1
+Accept: application/json
+
+###
+
+### Film abrufen (nach Id)
+GET {{lumen_backend_HostAddress}}/api/filme/{{FilmId}} HTTP/1.1
+Accept: application/json
+
+###
+
+### Vorstellungen eines Films abrufen
+GET {{lumen_backend_HostAddress}}/api/vorstellungen/{{FilmId}} HTTP/1.1
+Accept: application/json
+
+###
+
+### Einzelne Reservation abrufen
+GET {{lumen_backend_HostAddress}}/api/reservation/{{ReservationId}} HTTP/1.1
+Accept: application/json
+
+###
+
+### Belegte Sitzplätze einer Vorstellung abrufen
+GET {{lumen_backend_HostAddress}}/api/reservation/belegte/{{VorstellungId}} HTTP/1.1
+Accept: application/json
+
+###
+
+### Reservation anlegen
+POST {{lumen_backend_HostAddress}}/api/reservation HTTP/1.1
+Content-Type: application/json
+
+{
+  "filmId": "{{FilmId}}",
+  "vorstellungId": "{{VorstellungId}}",
+  "sitzplaetze": "A1,A2",
+  "name": "Max Mustermann",
+  "email": "max@example.com"
+}
+
+###
+
+### Reservation aktualisieren (PUT)
+PUT {{lumen_backend_HostAddress}}/api/reservation/{{ReservationId}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": "{{ReservationId}}",
+  "filmId": "{{FilmId}}",
+  "vorstellungId": "{{VorstellungId}}",
+  "sitzplaetze": "A1,A3",
+  "name": "Max Mustermann",
+  "email": "max@example.com"
+}
+
+###
+
+### Reservation löschen
+DELETE {{lumen_backend_HostAddress}}/api/reservation/{{ReservationId}} HTTP/1.1
