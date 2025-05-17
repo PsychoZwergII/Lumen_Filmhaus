@@ -22,7 +22,7 @@ namespace lumen_backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Reservation>> PostReservation([FromBody] Reservation reservation)
         {
-            // Validierung der Pflichtfelder
+            // 1. Validierung der Pflichtfelder
             if (string.IsNullOrWhiteSpace(reservation.Name) ||
                 string.IsNullOrWhiteSpace(reservation.Email) ||
                 string.IsNullOrWhiteSpace(reservation.Sitzplaetze))
@@ -30,12 +30,26 @@ namespace lumen_backend.Controllers
                 return BadRequest("Name, Email und Sitzplätze müssen angegeben werden.");
             }
 
-            // **Nicht mehr nötig**: reservation.Id = Guid.NewGuid();
-            // Stattdessen einfach hinzufügen und speichern:
+            // 2. Duplikat-Check: bereits belegte Plätze ermitteln
+            var belegt = await _context.Reservationen
+                .Where(r => r.VorstellungId == reservation.VorstellungId)
+                .SelectMany(r => r.Sitzplaetze
+                    .Split(',', StringSplitOptions.RemoveEmptyEntries))
+                .ToListAsync();
+
+            var neu = reservation.Sitzplaetze
+                .Split(',', StringSplitOptions.RemoveEmptyEntries);
+
+            if (neu.Any(p => belegt.Contains(p)))
+            {
+                return Conflict("Einer oder mehrere der ausgewählten Plätze sind bereits reserviert.");
+            }
+
+            // 3. Neue Reservation anlegen
             _context.Reservationen.Add(reservation);
             await _context.SaveChangesAsync();
 
-            // reservation.Id wurde jetzt von der DB gesetzt (int)
+            // 4. Response mit gesetzter ID zurückgeben
             return CreatedAtAction(
                 nameof(GetReservation),
                 new { id = reservation.Id },

@@ -18,5 +18,17 @@
     </nav>
     <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
   </header>
-  <body></body>
+  <body>
+    <main>
+      <h2>Wähle deine Plätze</h2>
+      <div id="seat-map" class="seat-grid"></div>
+      <form id="res-form">
+        <input name="name" placeholder="Name" required />
+        <input name="email" type="email" placeholder="E-Mail" required />
+        <button type="submit">Buchen</button>
+      </form>
+    </main>
+  </body>
+  <script src="Js/api.js"></script>
+  <script src="Js/reservation.js"></script>
 </html>

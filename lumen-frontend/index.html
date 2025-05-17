@@ -1,13 +1,99 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="de">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="CSS/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lumen Filmhaus – Beliebt</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <h1>Willkommen im Lumen Filmhaus</h1>
-    <div id="filmliste"></div>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="logo">
+        <img src="img/logo.png" alt="Lumen Filmhaus" />
+        <h1>Lumen Filmhaus</h1>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="programm.html">Programm</a>
+        <a href="reservation.html">Tickets</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+      <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
+    </header>
+
+    <!-- HAUPTTEIL -->
+    <main>
+      <h2>Beliebt</h2>
+
+      <!-- Grid-Container für alle Karten -->
+      <div class="card-grid">
+        <!-- Karte 1 -->
+        <div class="card">
+          <div class="image-wrapper">
+            <img src="img/Filme/Interstellar.jpg" alt="Interstellar" />
+            <div class="overlay">
+              <div class="content">
+                <h2 class="title">Interstellar</h2>
+                <p class="desc">
+                  Die Menschheit steht bereits kurz vor ihrer Auslöschung durch
+                  Klimawandel und Nahrungsmangel, als ein mysteriöser Riss ...
+                </p>
+                <a class="action" href="#">Find out more →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Karte 2 -->
+        <div class="card">
+          <div class="image-wrapper">
+            <img src="img/Filme/The-Dark-Knight.jpg" alt="The Dark Knight" />
+            <div class="overlay">
+              <div class="content">
+                <h2 class="title">The Dark Knight</h2>
+                <p class="desc">
+                  Batman hat Gotham City befreit, doch der Joker taucht auf ...
+                </p>
+                <a class="action" href="#">Find out more →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Karte 3 -->
+        <div class="card">
+          <div class="image-wrapper">
+            <img src="img/Filme/Fight-Club.jpg" alt="Fight Club" />
+            <div class="overlay">
+              <div class="content">
+                <h2 class="title">Fight Club</h2>
+                <p class="desc">
+                  Ein namenloser Erzähler ist unzufrieden mit seinem Leben ...
+                </p>
+                <a class="action" href="#">Find out more →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Karte 4 -->
+        <div class="card">
+          <div class="image-wrapper">
+            <img src="img/Filme/The-Matrix.jpg" alt="The Matrix" />
+            <div class="overlay">
+              <div class="content">
+                <h2 class="title">The Matrix</h2>
+                <p class="desc">
+                  Neo ist ein Computer-Hacker, der von einer geheimnisvollen ...
+                </p>
+                <a class="action" href="#">Find out more →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hier noch weitere .card-Blöcke für die restlichen Filme -->
+      </div>
+    </main>
   </body>
-  <script src="JS/script.js"></script>
 </html>

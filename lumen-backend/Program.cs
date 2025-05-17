@@ -27,7 +27,11 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 
-builder.Services.AddCors();
+builder.Services.AddCors(opt =>
+  opt.AddDefaultPolicy(policy =>
+    policy.AllowAnyHeader()
+          .AllowAnyMethod()
+          .WithOrigins("http://localhost:5500")));
 var app = builder.Build();
 app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
@@ -41,6 +45,8 @@ if (app.Environment.IsDevelopment())
         c.RoutePrefix = string.Empty;    // Swagger UI unter http://localhost:5029/
     });
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
