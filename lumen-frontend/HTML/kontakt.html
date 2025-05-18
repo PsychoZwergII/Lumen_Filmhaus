@@ -1,39 +1,73 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../CSS/style.css" />
+    <title>Kontakt – Lumen Filmhaus</title>
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
-  <header class="site-header">
-    <div class="logo">
-      <img src="../img/Logo2-NoBackground-NoName.png" alt="Lumen Filmhaus" />
-      <h1>Lumen Filmhaus</h1>
-    </div>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="programm.html">Programm</a>
-      <a href="reservation.html">Tickets</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
-    <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
-  </header>
   <body>
-    <main>
+     <!-- Notification-Container wird hier platziert -->
+  <ul id="notification-container" class="notification-container"></ul>
+
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="logo">
+        <img src="../img/Logo2-NoBackground-NoName.png" alt="Lumen Filmhaus" />
+        <h1>Lumen Filmhaus</h1>
+      </div>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="programm.html">Programm</a>
+        <a href="kontakt.html" aria-current="page">Kontakt</a>
+      </nav>
+      <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
+    </header>
+
+    <main class="contact-page">
       <h2>Kontakt</h2>
-      <form id="contact-form">
-        <input name="name" placeholder="Name" required />
-        <input name="vorname" placeholder="Vorname" />
-        <input name="email" type="email" placeholder="E-Mail" required />
-        <input name="phone" placeholder="Telefonnummer" />
-        <textarea
-          name="message"
-          placeholder="Deine Nachricht"
-          required
-        ></textarea>
-        <button type="submit">Absenden</button>
+      <form id="contact-form" class="contact-form" novalidate>
+        <div class="form-group">
+          <label for="name">Name *</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+
+        <div class="form-group">
+          <label for="vorname">Vorname</label>
+          <input id="vorname" name="vorname" type="text" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-Mail *</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Telefonnummer</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="+49 123 4567890"
+            pattern="^\+?[0-9\s\-]{7,20}$"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Nachricht *</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">Absenden</button>
+        <br />
+        <br />
+      </div>
       </form>
     </main>
+
+    <!-- FOOTER -->
+     <script src="../js/notifications.js"></script>
+    <script src="../js/kontakt.js"></script>
   </body>
-  <script src="kontakt.html"></script>
 </html>

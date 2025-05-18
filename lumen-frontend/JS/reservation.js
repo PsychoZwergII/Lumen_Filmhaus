@@ -1,34 +1,54 @@
-// reservation.js
-import { fetchBelegtePlaetze, postReservation } from "./api.js";
-window.addEventListener("DOMContentLoaded", async () => {
-  const params = new URL(location.href).searchParams;
+const API_HOST = "http://localhost:5029";
+// js/reservation.js
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.getElementById("seat-grid");
+  const next = document.getElementById("next-btn");
+
+  // 1) Query-Parameter auslesen
+  const params = new URLSearchParams(window.location.search);
+  const filmId = params.get("filmId"); // jetzt korrekt befüllt
   const vorId = params.get("vorstellungId");
-  const seats = 8 * 10; // z.B. 8 Reihen × 10 Sitze
-  const booked = await fetchBelegtePlaetze(vorId);
-  const map = document.getElementById("seat-map");
-  for (let i = 1; i <= seats; i++) {
-    const code = `R${Math.ceil(i / 10)}S${i % 10 || 10}`;
-    const btn = document.createElement("button");
-    btn.textContent = code;
-    btn.disabled = booked.includes(code);
-    btn.className = booked.includes(code) ? "seat booked" : "seat free";
-    btn.addEventListener("click", () => btn.classList.toggle("selected"));
-    map.append(btn);
+  console.log("Lade Sitzplan für Vorstellung:", vorId);
+
+  // 2) bereits gebuchte Plätze laden
+  fetch(`http://localhost:5029/api/Reservation/belegte/${vorId}`)
+    .then((res) => res.json())
+    .then((booked) => renderSeats(booked))
+    .catch((err) => console.error("Fetch-Error:", err));
+
+  let selected = [];
+
+  // 3) Sitzraster zeichnen
+  function renderSeats(booked) {
+    const rows = ["A", "B", "C", "D", "E", "F", "G", "H"];
+    const cols = 12;
+    grid.innerHTML = "";
+
+    rows.forEach((row) => {
+      for (let i = 1; i <= cols; i++) {
+        const code = `${row}${i}`;
+        const btn = document.createElement("button");
+        btn.textContent = code;
+        btn.className = "seat";
+        btn.disabled = booked.includes(code);
+        if (btn.disabled) btn.classList.add("booked");
+
+        btn.addEventListener("click", () => {
+          btn.classList.toggle("selected");
+          const idx = selected.indexOf(code);
+          if (idx === -1) selected.push(code);
+          else selected.splice(idx, 1);
+          next.disabled = selected.length === 0;
+        });
+
+        grid.appendChild(btn);
+      }
+    });
   }
-  document.getElementById("res-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const selected = [...map.querySelectorAll(".selected")]
-      .map((b) => b.textContent)
-      .join(",");
-    const data = {
-      vorstellungId: +vorId,
-      filmId: +params.get("filmId"),
-      sitzplaetze: selected,
-      name: e.target.name.value,
-      email: e.target.email.value,
-    };
-    await postReservation(data);
-    alert("Erfolgreich gebucht!");
-    location.href = "index.html";
+
+  // 4) Auf Klick weiter zur Formularseite
+  next.addEventListener("click", () => {
+    const seatsParam = encodeURIComponent(selected.join(","));
+    window.location.href = `reservation-form.html?filmId=${filmId}&vorstellungId=${vorId}&seats=${seatsParam}`;
   });
 });

@@ -20,41 +20,46 @@ namespace lumen_backend.Controllers
         /// Neue Reservation anlegen.
         /// </summary>
         [HttpPost]
-        public async Task<ActionResult<Reservation>> PostReservation([FromBody] Reservation reservation)
-        {
-            // 1. Validierung der Pflichtfelder
-            if (string.IsNullOrWhiteSpace(reservation.Name) ||
-                string.IsNullOrWhiteSpace(reservation.Email) ||
-                string.IsNullOrWhiteSpace(reservation.Sitzplaetze))
-            {
-                return BadRequest("Name, Email und Sitzplätze müssen angegeben werden.");
-            }
+public async Task<ActionResult<Reservation>> PostReservation([FromBody] Reservation reservation)
+{
+    // Pflichtfelder prüfen
+    if (string.IsNullOrWhiteSpace(reservation.Name) ||
+        string.IsNullOrWhiteSpace(reservation.Email) ||
+        string.IsNullOrWhiteSpace(reservation.Sitzplaetze))
+    {
+        return BadRequest("Name, Email und Sitzplätze müssen angegeben werden.");
+    }
 
-            // 2. Duplikat-Check: bereits belegte Plätze ermitteln
-            var belegt = await _context.Reservationen
-                .Where(r => r.VorstellungId == reservation.VorstellungId)
-                .SelectMany(r => r.Sitzplaetze
-                    .Split(',', StringSplitOptions.RemoveEmptyEntries))
-                .ToListAsync();
+    // 1) Nur die Sitzplatz-Strings für diese Vorstellung auslesen
+    var rawLists = await _context.Reservationen
+        .Where(r => r.VorstellungId == reservation.VorstellungId)
+        .Select(r => r.Sitzplaetze)
+        .ToListAsync();
 
-            var neu = reservation.Sitzplaetze
-                .Split(',', StringSplitOptions.RemoveEmptyEntries);
+    // 2) Erst jetzt in-memory splitten und trimmen
+    var alreadyBooked = rawLists
+        .SelectMany(s => s.Split(',', StringSplitOptions.RemoveEmptyEntries))
+        .Select(s => s.Trim())
+        .ToHashSet(StringComparer.OrdinalIgnoreCase);
 
-            if (neu.Any(p => belegt.Contains(p)))
-            {
-                return Conflict("Einer oder mehrere der ausgewählten Plätze sind bereits reserviert.");
-            }
+    // 3) Die neu angefragten Plätze
+    var neu = reservation.Sitzplaetze
+        .Split(',', StringSplitOptions.RemoveEmptyEntries)
+        .Select(s => s.Trim());
 
-            // 3. Neue Reservation anlegen
-            _context.Reservationen.Add(reservation);
-            await _context.SaveChangesAsync();
+    // 4) Überschneidung prüfen
+    if (neu.Any(p => alreadyBooked.Contains(p)))
+        return Conflict("Ein oder mehrere der ausgewählten Plätze sind bereits reserviert.");
 
-            // 4. Response mit gesetzter ID zurückgeben
-            return CreatedAtAction(
-                nameof(GetReservation),
-                new { id = reservation.Id },
-                reservation);
-        }
+    // 5) Speichern
+    _context.Reservationen.Add(reservation);
+    await _context.SaveChangesAsync();
+
+    return CreatedAtAction(
+        nameof(GetReservation),
+        new { id = reservation.Id },
+        reservation);
+}
 
         /// <summary>
         /// Einzelne Reservation abfragen.
@@ -73,12 +78,23 @@ namespace lumen_backend.Controllers
         [HttpGet("belegte/{vorstellungId:int}")]
         public async Task<ActionResult<IEnumerable<string>>> GetBelegtePlaetze(int vorstellungId)
         {
-            var sitzlisten = await _context.Reservationen
+            // 1) Nur die Sitzplatz-Strings auslesen
+            var raw = await _context.Reservationen
                 .Where(r => r.VorstellungId == vorstellungId)
-                .SelectMany(r => r.Sitzplaetze.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                .Select(r => r.Sitzplaetze)
                 .ToListAsync();
+
+            // 2) In-Memory splitten
+            var sitzlisten = raw
+                .SelectMany(s => s
+                    .Split(',', StringSplitOptions.RemoveEmptyEntries)
+                    .Select(p => p.Trim()))
+                .ToList();
 
             return Ok(sitzlisten);
         }
+
+        /// <summary>
+        /// Alle Reservationen für
     }
 }

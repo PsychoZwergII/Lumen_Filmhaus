@@ -13,22 +13,22 @@
     <nav>
       <a href="../index.html">Home</a>
       <a href="programm.html">Programm</a>
-      <a href="reservation.html">Tickets</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
-    <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
   </header>
-  <body>
-    <main>
-      <h2>Wähle deine Plätze</h2>
-      <div id="seat-map" class="seat-grid"></div>
-      <form id="res-form">
-        <input name="name" placeholder="Name" required />
-        <input name="email" type="email" placeholder="E-Mail" required />
-        <button type="submit">Buchen</button>
-      </form>
+ <main>
+      <h2>Wähle deine Sitzplätze</h2>
+      <!-- Film- und Vorstellungs-ID als Parameter -->
+      <div
+        id="seat-grid"
+        class="seat-grid"
+      >
+        <!-- JS füllt hier das Grid -->
+      </div>
+
+      <button id="next-btn" disabled>Weiter zur Reservierung →</button>
     </main>
   </body>
-  <script src="Js/api.js"></script>
-  <script src="Js/reservation.js"></script>
+  <script src="../Js/api.js"></script>
+  <script src="../Js/reservation.js"></script>
 </html>
