@@ -1,26 +1,921 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="de">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="../CSS/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lumen Filmhaus – Programm</title>
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
-  <header class="site-header">
-    <div class="logo">
-      <img src="img/logo.png" alt="Lumen Filmhaus" />
-      <h1>Lumen Filmhaus</h1>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="programm.html">Programm</a>
-      <a href="reservation.html">Tickets</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
-    <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
-  </header>
   <body>
-    <div id="programm-grid" class="card-grid"></div>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="logo">
+        <img src="../img/Logo2-NoBackground-NoName.png" alt="Lumen Filmhaus" />
+        <h1>Lumen Filmhaus</h1>
+      </div>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="programm.html">Programm</a>
+        <a href="reservation.html">Tickets</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+      <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
+    </header>
+
+    <!-- HAUPTTEIL -->
+    <main>
+      <div class="programm-header">
+        <h2>Aktuelles Programm</h2>
+        <p>Entdecke unsere Filmhighlights dieser Woche</p>
+      </div>
+
+      <!-- 2025-05-20 -->
+      <div class="date-section">
+        <h3>Dienstag, 20. Mai 2025</h3>
+      </div>
+
+      <div class="card-grid">
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img
+              src="../img/Filme/The-Shawshank-Redemption.jpg"
+              alt="The Shawshank Redemption"
+            />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">The Shawshank Redemption</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>18:00 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                142 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 1</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 16</span
+              >
+            </div>
+            <p class="film-details">
+              Zwei Gefangene verbinden sich über Jahre und finden Trost und
+              schliesslich Erlösung durch Handlungen der gemeinsamen
+              Menschlichkeit.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/shawshank.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img src="../img/Filme/The_Godfather.jpg" alt="The Godfather" />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">The Godfather</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>20:30 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                175 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 2</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 18</span
+              >
+            </div>
+            <p class="film-details">
+              Der alternde Patriarch einer Verbrecherdynastie will die
+              Herrschaft über sein geheimes Imperium auf seinen widerwilligen
+              Sohn übertragen.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/the-godfather.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img src="../img/Filme/The-Dark-Knight.jpg" alt="The Dark Knight" />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">The Dark Knight</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>22:00 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                152 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 1</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 16</span
+              >
+            </div>
+            <p class="film-details">
+              Batman, Gordon und Harvey Dent müssen zusammenarbeiten, um den
+              neuen Schurken, der als der Joker bekannt ist, zu besiegen.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/the-dark-knight.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2025-05-21 -->
+      <div class="date-section">
+        <h3>Mittwoch, 21. Mai 2025</h3>
+      </div>
+
+      <div class="card-grid">
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img src="../img/Filme/Pulp-Fiction.jpg" alt="Pulp Fiction" />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">Pulp Fiction</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>17:00 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                154 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 3</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 18</span
+              >
+            </div>
+            <p class="film-details">
+              Das Leben zweier Auftragsmörder, eines Boxers, eines
+              Gangsterbosses und seiner Frau verflechten sich in vier
+              Geschichten über Gewalt und Erlösung.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/pulp-fiction.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img
+              src="../img/Filme/Schindlers-List.jpg"
+              alt="Schindler's List"
+            />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">Schindler's List</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>19:30 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                195 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 1</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 16</span
+              >
+            </div>
+            <p class="film-details">
+              In Nazi-Deutschland während des Zweiten Weltkriegs rettet Oskar
+              Schindler über 1100 Juden vor dem sicheren Tod.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/schindlers-list.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2025-05-22 -->
+      <div class="date-section">
+        <h3>Donnerstag, 22. Mai 2025</h3>
+      </div>
+
+      <div class="card-grid">
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img src="../img/Filme/Inception.jpg" alt="Inception" />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">Inception</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>18:00 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                148 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 2</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 12</span
+              >
+            </div>
+            <p class="film-details">
+              Ein Dieb, der Geheimnisse aus den Träumen anderer stiehlt, wird
+              beauftragt, eine Idee in den Geist eines CEOs zu pflanzen.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/inception.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img src="../img/Filme/Fight-Club.jpg" alt="Fight Club" />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">Fight Club</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>20:30 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                139 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 3</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 18</span
+              >
+            </div>
+            <p class="film-details">
+              Ein unzufriedener Büroangestellter und ein rätselhafter
+              Seifenverkäufer gründen einen unterirdischen Kampfclub.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/fight-club.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img src="../img/Filme/Forrest-Gump.jpg" alt="Forrest Gump" />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">Forrest Gump</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>22:00 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                142 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 1</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 12</span
+              >
+            </div>
+            <p class="film-details">
+              Die Geschichte eines Mannes mit niedrigem IQ, der unwissentlich
+              wichtige Ereignisse des 20. Jahrhunderts beeinflusst.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/forrest-gump.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2025-05-23 -->
+      <div class="date-section">
+        <h3>Freitag, 23. Mai 2025</h3>
+      </div>
+
+      <div class="card-grid">
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img src="../img/Filme/The-Matrix.jpg" alt="The Matrix" />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">The Matrix</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>17:00 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                136 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 2</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 16</span
+              >
+            </div>
+            <p class="film-details">
+              Ein Computerhacker erfährt von geheimnisvollen Rebellen die
+              schockierende Wahrheit über die Realität.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/matrix.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img src="../img/Filme/Interstellar.jpg" alt="Interstellar" />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">Interstellar</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>19:30 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                169 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 1</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 12</span
+              >
+            </div>
+            <p class="film-details">
+              Eine Gruppe von Entdeckern reist durch ein Wurmloch in der
+              Hoffnung, die Menschheit zu retten.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/interstellar.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2025-05-24 -->
+      <div class="date-section">
+        <h3>Samstag, 24. Mai 2025</h3>
+      </div>
+
+      <div class="card-grid">
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img
+              src="../img/Filme/The-Shawshank-Redemption.jpg"
+              alt="The Shawshank Redemption"
+            />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">The Shawshank Redemption</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>18:00 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                142 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 1</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 16</span
+              >
+            </div>
+            <p class="film-details">
+              Zwei Gefangene verbinden sich über Jahre und finden Trost und
+              schliesslich Erlösung durch Handlungen der gemeinsamen
+              Menschlichkeit.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/shawshank.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img src="../img/Filme/Pulp-Fiction.jpg" alt="Pulp Fiction" />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">Pulp Fiction</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>20:30 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                154 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 3</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 18</span
+              >
+            </div>
+            <p class="film-details">
+              Das Leben zweier Auftragsmörder, eines Boxers, eines
+              Gangsterbosses und seiner Frau verflechten sich in vier
+              Geschichten über Gewalt und Erlösung.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/pulp-fiction.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img src="../img/Filme/Fight-Club.jpg" alt="Fight Club" />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">Fight Club</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>22:00 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                139 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 3</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 18</span
+              >
+            </div>
+            <p class="film-details">
+              Ein unzufriedener Büroangestellter und ein rätselhafter
+              Seifenverkäufer gründen einen unterirdischen Kampfclub.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/fight-club.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2025-05-25 -->
+      <div class="date-section">
+        <h3>Sonntag, 25. Mai 2025</h3>
+      </div>
+
+      <div class="card-grid">
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img src="../img/Filme/The_Godfather.jpg" alt="The Godfather" />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">The Godfather</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>19:00 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                175 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 2</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 18</span
+              >
+            </div>
+            <p class="film-details">
+              Der alternde Patriarch einer Verbrecherdynastie will die
+              Herrschaft über sein geheimes Imperium auf seinen widerwilligen
+              Sohn übertragen.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/the-godfather.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="programm-card">
+          <div class="image-wrapper">
+            <img
+              src="../img/Filme/Schindlers-List.jpg"
+              alt="Schindler's List"
+            />
+          </div>
+          <div class="programm-content">
+            <h3 class="film-title">Schindler's List</h3>
+            <div class="film-time">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"
+                />
+              </svg>
+              <span>21:30 Uhr</span>
+            </div>
+            <div class="film-meta">
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                </svg>
+                195 Min</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12,3L2,12H5V20H19V12H22L12,3Z" />
+                </svg>
+                Saal 1</span
+              >
+              <span
+                ><svg viewBox="0 0 24 24" width="16" height="16">
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 16</span
+              >
+            </div>
+            <p class="film-details">
+              In Nazi-Deutschland während des Zweiten Weltkriegs rettet Oskar
+              Schindler über 1100 Juden vor dem sicheren Tod.
+            </p>
+            <div class="film-actions">
+              <a href="reservation.html" class="btn btn-primary"
+                >Tickets buchen</a
+              >
+              <a
+                href="../HTML/Film-Details/schindlers-list.html"
+                class="btn btn-secondary"
+                >Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../Js/api.js"></script>
+    <script src="../Js/programm.js"></script>
   </body>
-  <script src="Js/api.js"></script>
-  <script src="Js/programm.js"></script>
 </html>

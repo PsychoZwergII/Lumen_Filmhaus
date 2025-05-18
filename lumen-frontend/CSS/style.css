@@ -1,132 +1,417 @@
-/* ===== Reset & Basis ===== */
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  font-family: sans-serif;
-  line-height: 1.4;
+:root {
+  /* Dunkle, kinotaugliche Basis */
+  --color-bg-dark: #0f0e17; /* Tiefes Nachtblau (Kinosaal) */
+  --color-bg-light: #1a1a2e; /* Leicht aufgehellt für Akzente */
+
+  /* Primärfarbe: Kinomagenta */
+  --color-primary: #e94584; /* Lebendiges Magenta */
+  --color-primary-light: #ff6b9e; /* Helle Variante */
+  --color-primary-dark: #b52a5d; /* Dunklere Variante */
+
+  /* Sekundärfarbe: Gold */
+  --color-secondary: #ffd700; /* Kinoklassisches Gold */
+  --color-secondary-light: #ffea8a;
+
+  /* Akzentfarbe: Blau */
+  --color-accent: #25aae1; /* Leinwandlicht-Blau */
+
+  /* Textfarben */
+  --color-text-light: #fffffe; /* Reinweiß */
+  --color-text-dark: #0f0e17; /* Dunkel */
+  --color-text-muted: #a7a9be; /* Gedämpft */
+
+  /* Hilfsfarben */
+  --color-border: #2e2e48; /* Trennlinien */
+  --color-shadow: rgba(0, 0, 0, 0.5);
 }
 
-/* ===== Header ===== */
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body */
+body {
+  font-family: "Arial", sans-serif;
+  background: var(--color-bg-dark);
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+main {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-dark) 0%,
+    var(--color-bg-light) 100%
+  );
+  padding: 2rem 0;
+}
+
+/* Header */
 .site-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #eee;
-  padding: 0.5rem 1rem;
+  background: var(--color-bg-dark);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--color-primary);
+  box-shadow: 0 2px 10px var(--color-shadow);
 }
-.logo {
+
+.site-header .logo {
   display: flex;
   align-items: center;
-}
-.logo img {
-  height: 40px;
-  margin-right: 0.5rem;
-}
-.site-header nav a {
-  margin: 0 0.5rem;
-  text-decoration: none;
-  color: #333;
+  gap: 1rem;
 }
 
-/* ===== Grid der Karten ===== */
+.site-header .logo img {
+  height: 60px;
+}
+
+.site-header .logo h1 {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.site-header nav a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus {
+  color: var(--color-primary);
+}
+
+.site-header nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.3s;
+}
+
+.site-header nav a:hover::after {
+  width: 100%;
+}
+
+#menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Section title */
+h2 {
+  margin: 2rem 0 1rem;
+  font-size: 2rem;
+  color: var(--color-secondary);
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: var(--color-primary);
+}
+
+h1 {
+  margin: 1.5rem 1rem;
+  font-size: 2.5rem;
+  color: var(--color-primary);
+}
+
+/* Grid der Karten */
 .card-grid {
   display: grid;
-  /* so viele 250px-Spalten wie passen, ansonsten 1fr */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 1rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* ===== Einzelne Karte ===== */
+/* Einzelne Karte */
 .card {
   position: relative;
   overflow: hidden;
-  border-radius: 0.5rem;
-  background: #fff;
-  /*box-shadow: 0 16px 32px rgba(0, 0, 0, 0.05);*/
+  border-radius: 8px;
+  background: var(--color-bg-light);
+  box-shadow: 0 8px 20px var(--color-shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* Bild-Container */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Bild */
 .image-wrapper {
-  position: relative;
-}
-.image-wrapper img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: 400px;
+  overflow: hidden;
 }
 
-/* ===== Overlay für Hover ===== */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+.image-wrapper img {
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.card:hover .image-wrapper img {
+  transform: scale(1.05);
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 14, 23, 0.9);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-text-light);
 }
 
-/* Inhalt im Overlay */
-.overlay .content {
-  text-align: center;
-}
+/* Titel & Beschreibung im Overlay */
 .overlay .title {
-  margin: 0 0 0.5rem;
-  font-size: 1.25rem;
-  color: #111827;
-}
-.overlay .desc {
-  font-size: 0.9rem;
-  color: #555;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
   margin-bottom: 1rem;
 }
-.overlay .action {
-  display: inline-block;
-  background: #2563eb;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  text-decoration: none;
+
+.overlay .desc {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
 }
 
-/* Overlay einblenden bei Hover */
+/* Rating Sterne */
+.rating {
+  color: var(--color-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+/* Button */
+.overlay .action {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.overlay .action:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(233, 69, 132, 0.4);
+}
+
+/* Overlay einblenden */
 .card:hover .overlay {
   opacity: 1;
 }
 
-h2 {
-  margin: 0;
-  padding: 1rem;
-  font-size: 1.5rem;
-  color: #111827;
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+  .site-header nav {
+    display: none;
+  }
+
+  #menu-toggle {
+    display: block;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    padding: 1rem;
+  }
+
+  .image-wrapper {
+    height: 320px;
+  }
 }
 
-.logo {
+/* Special Section */
+#Beliebt {
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-light) 0%,
+    var(--color-bg-dark) 100%
+  );
+  padding: 2rem;
+  margin: 2rem 0;
+  border-top: 1px solid var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+}
+
+#Beliebt h2 {
+  color: var(--color-secondary-light);
+}
+
+#logo {
   display: flex;
   align-items: center;
-}
-.logo img {
+  justify-content: center;
   height: 80px;
-  margin-right: 0.5rem;
+  margin: 2rem 0;
 }
 
-#menu-toggle {
-  cursor: pointer;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #333;
+/* Zusätzliche Styles für die Programmseite */
+.programm-header {
+  text-align: center;
+  margin: 2rem 0;
+  position: relative;
 }
-#menu-toggle:hover {
-  background: #ddd;
-  border-radius: 0.25rem;
+
+.programm-header h2 {
+  font-size: 2.5rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.programm-header p {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.date-section {
+  margin: 3rem 0 1rem;
+  padding: 1rem 2rem;
+  background: var(--color-bg-light);
+  border-left: 4px solid var(--color-primary);
+}
+
+.date-section h3 {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.programm-card {
+  position: relative;
+  background: var(--color-bg-light);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px var(--color-shadow);
+  transition: transform 0.3s;
+}
+
+.programm-card:hover {
+  transform: translateY(-5px);
+}
+
+.programm-content {
+  padding: 1.5rem;
+}
+
+.film-title {
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.film-time {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-secondary);
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.film-time svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.film-details {
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.film-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--color-bg-dark);
+  color: var(--color-text-light);
+  border: 1px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary-dark);
+}
+
+@media (max-width: 768px) {
+  .film-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
