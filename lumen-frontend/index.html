@@ -10,16 +10,18 @@
     <!-- HEADER -->
     <header class="site-header">
       <div class="logo">
-        <img src="img/logo.png" alt="Lumen Filmhaus" />
+        <img src="img/logo.png" alt="Lumen Filmhaus" id="logo" />
         <h1>Lumen Filmhaus</h1>
       </div>
       <nav>
         <a href="index.html">Home</a>
-        <a href="programm.html">Programm</a>
-        <a href="reservation.html">Tickets</a>
-        <a href="kontakt.html">Kontakt</a>
+        <a href="HTML/programm.html">Programm</a>
+        <a href="HTML/reservation.html">Tickets</a>
+        <a href="HTML/kontakt.html">Kontakt</a>
       </nav>
-      <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
+      <button id="menu-toggle" aria-label="Menü öffnen" onclick="OpenMenubar()">
+        ☰
+      </button>
     </header>
 
     <!-- HAUPTTEIL -->
@@ -39,7 +41,9 @@
                   Die Menschheit steht bereits kurz vor ihrer Auslöschung durch
                   Klimawandel und Nahrungsmangel, als ein mysteriöser Riss ...
                 </p>
-                <a class="action" href="#">Find out more →</a>
+                <a class="action" href="HTML/Film-Details/interstellar.html"
+                  >Mehr erfahren →</a
+                >
               </div>
             </div>
           </div>
@@ -54,7 +58,9 @@
                 <p class="desc">
                   Batman hat Gotham City befreit, doch der Joker taucht auf ...
                 </p>
-                <a class="action" href="#">Find out more →</a>
+                <a class="action" href="HTML/Film-Details/the-dark-knight.html"
+                  >Mehr erfahren →</a
+                >
               </div>
             </div>
           </div>
@@ -70,7 +76,9 @@
                 <p class="desc">
                   Ein namenloser Erzähler ist unzufrieden mit seinem Leben ...
                 </p>
-                <a class="action" href="#">Find out more →</a>
+                <a class="action" href="HTML/Film-Details/fight-club.html"
+                  >Mehr erfahren →</a
+                >
               </div>
             </div>
           </div>
@@ -86,7 +94,9 @@
                 <p class="desc">
                   Neo ist ein Computer-Hacker, der von einer geheimnisvollen ...
                 </p>
-                <a class="action" href="#">Find out more →</a>
+                <a class="action" href="HTML/Film-Details/matrix.html"
+                  >Mehr erfahren →</a
+                >
               </div>
             </div>
           </div>
@@ -96,4 +106,7 @@
       </div>
     </main>
   </body>
+  <script src="Js/api.js"></script>
+  <script src="Js/home.js"></script>
+  <script src="JS/script.js"></script>
 </html>

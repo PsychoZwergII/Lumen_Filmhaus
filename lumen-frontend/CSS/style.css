@@ -45,7 +45,7 @@ body {
   overflow: hidden;
   border-radius: 0.5rem;
   background: #fff;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.05);
+  /*box-shadow: 0 16px 32px rgba(0, 0, 0, 0.05);*/
 }
 
 /* Bild-Container */
@@ -101,4 +101,32 @@ body {
 /* Overlay einblenden bei Hover */
 .card:hover .overlay {
   opacity: 1;
+}
+
+h2 {
+  margin: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+  color: #111827;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 80px;
+  margin-right: 0.5rem;
+}
+
+#menu-toggle {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333;
+}
+#menu-toggle:hover {
+  background: #ddd;
+  border-radius: 0.25rem;
 }
