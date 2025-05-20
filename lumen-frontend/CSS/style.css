@@ -23,6 +23,22 @@
   /* Hilfsfarben */
   --color-border: #2e2e48; /* Trennlinien */
   --color-shadow: rgba(0, 0, 0, 0.5);
+
+  --seat-available: var(--color-secondary); /* Gold (#ffd700) */
+  --seat-hover: var(--color-secondary-light); /* Helles Gold */
+  --seat-selected: var(--color-primary); /* Magenta (#e94584) */
+  --seat-booked: #444444; /* Dunkelgrau für gebuchte Sitze */
+  --seat-size: 32px;
+  --seat-gap: 8px;
+
+  /* Beispiel-Farben; passe sie bei Bedarf an */
+  --screen-line-color: var(--color-primary); /* Pink/Magenta */
+  /* oder: --screen-line-color: var(--color-accent);  für Blau */
+  --screen-text-bg: var(
+    --color-bg-dark
+  ); /* dunkler Hintergrund hinter dem Text */
+  --screen-height: 4px;
+  --screen-max-width: 600px;
 }
 
 /* Reset */
@@ -837,37 +853,183 @@ textarea:invalid {
     transform: translateX(-100%);
   }
 }
+/* ==== Kino-Saal & Sitz-Darstellung ==== */
+.cinema-container {
+  /*max-width: 800px;
+  margin: 0 auto 2rem;*/
+  padding: 0 1rem;
+  text-align: center;
+}
+.reservation-page {
+  padding: 0 1rem;
+}
 
+.screen {
+  position: relative;
+  width: 100%;
+  max-width: var(--screen-max-width);
+  height: var(--screen-height);
+  margin: 2rem auto;
+}
+
+.screen::before,
+.screen::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: var(--screen-height);
+  background-color: var(--screen-line-color);
+  border-radius: var(--screen-height);
+  transform-origin: center;
+}
+
+/* linke Linie leicht nach oben gerückt und gedreht */
+.screen::before {
+  left: 0;
+  transform: translateY(-50%) rotate(-2deg);
+}
+
+/* rechte Linie leicht nach unten gerückt und gedreht */
+.screen::after {
+  right: 0;
+  transform: translateY(-50%) rotate(2deg);
+}
+
+.screen-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--screen-text-bg);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--screen-line-color);
+  border-radius: 2px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
 .seat-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 4px;
-  padding: 1rem;
+  grid-template-columns: repeat(12, var(--seat-size));
+  gap: var(--seat-gap);
+  justify-content: center;
+  margin-bottom: 2rem;
 }
+
+/* Sitz-Button als Kinoplatz */
+/* Grid */
+.seat-grid {
+  display: grid;
+  grid-template-columns: repeat(12, var(--seat-size));
+  gap: var(--seat-gap);
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Jeder Sitz-Button */
 .seat {
-  padding: 8px 0;
-  border: 1px solid #444;
-  background: #fff;
-  cursor: pointer;
-  border-radius: 4px;
-}
-.seat.booked {
-  background: #ccc;
-  cursor: not-allowed;
-}
-.seat.selected {
-  background: #7f00ff;
-  color: #fff;
-}
-#next-btn {
-  margin: 1rem;
-  padding: 0.75rem 1.5rem;
-  background: #7f00ff;
-  color: #fff;
+  position: relative;
+  width: var(--seat-size);
+  height: var(--seat-size);
+
+  /* Gelbes Quadrat + schwarzes Sofa-Icon */
+  background-color: var(--seat-available);
+  background-image: url("../IMG/icons/sofa-black-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70% 70%;
+
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+
+  /* damit der nachfolgende ::after-Text sichtbar ist */
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: bold;
 }
+
+/* gebuchte Plätze */
+.seat.booked {
+  background-color: var(--seat-booked);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Hover nur auf freien Sitzen */
+.seat:not(.booked):hover {
+  background-color: var(--seat-hover);
+  transform: scale(1.1);
+}
+
+/* Ausgewählte Sitze */
+.seat.selected {
+  background-color: var(--seat-selected);
+  transform: scale(1.1);
+}
+
+/* Sitz-Nummer (data-seat="A1", "B3" …) mittig über dem Icon */
+.seat::after {
+  content: attr(data-seat);
+  position: absolute;
+  top: -28px; /* 28px oberhalb des Sitzes */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  white-space: nowrap;
+  pointer-events: none;
+  display: none; /* versteckt */
+  z-index: 2;
+}
+
+/* Bei Hover anzeigen */
+.seat:not(.booked):hover::after {
+  display: block;
+}
+
+/* (Optional) leichter Fade‐In */
+.seat::after {
+  transition: opacity 0.15s;
+  opacity: 0;
+}
+.seat:not(.booked):hover::after {
+  opacity: 1;
+}
+
+/* Optional: kleiner Pfeil oben am Tooltip (falls du das brauchen willst) */
+/*.seat:hover::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+}*/
+/* Knöpfe unten */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+#next-btn,
+#backBtn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+}
+
 #next-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;

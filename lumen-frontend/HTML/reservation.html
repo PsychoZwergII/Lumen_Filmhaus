@@ -1,34 +1,46 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Sitzplatzwahl – Lumen Filmhaus</title>
     <link rel="stylesheet" href="../CSS/style.css" />
   </head>
-  <header class="site-header">
-    <div class="logo">
-      <img src="../img/Logo2-NoBackground-NoName.png" alt="Lumen Filmhaus" />
-      <h1>Lumen Filmhaus</h1>
-    </div>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="programm.html">Programm</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
-  </header>
- <main>
+  <body>
+    <header class="site-header">
+      <div class="logo">
+        <img src="../img/Logo2-NoBackground-NoName.png" alt="Lumen Filmhaus" />
+        <h1>Lumen Filmhaus</h1>
+      </div>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="programm.html">Programm</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+    </header>
+
+    <main class="reservation-page">
       <h2>Wähle deine Sitzplätze</h2>
-      <!-- Film- und Vorstellungs-ID als Parameter -->
-      <div
-        id="seat-grid"
-        class="seat-grid"
-      >
-        <!-- JS füllt hier das Grid -->
+      <div class="cinema-container">
+        <div class="screen">
+          <span class="screen-text">Leinwand</span>
+        </div>
+        <div id="seat-grid" class="seat-grid"></div>
       </div>
 
-      <button id="next-btn" disabled>Weiter zur Reservierung →</button>
+      <div class="action-buttons">
+        <button class="btn btn-secondary" id="backBtn">Zurück</button>
+        <button class="btn btn-primary" id="next-btn" disabled>
+          Weiter zur Reservierung →
+        </button>
+      </div>
     </main>
+    <script src="../Js/reservation.js"></script>
   </body>
-  <script src="../Js/api.js"></script>
-  <script src="../Js/reservation.js"></script>
+  <footer>
+    <div class="footer-content" style="text-align: center">
+      <p>&copy; 2023 Lumen Filmhaus. Alle Rechte vorbehalten.</p>
+      <p>Impressum | Datenschutz</p>
+    </div>
+  </footer>
 </html>
