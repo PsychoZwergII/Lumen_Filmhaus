@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>forest Gump – Lumen Filmhaus</title>
+    <link rel="stylesheet" href="../../CSS/style.css" />
+    <style>
+      /* Gemeinsame CSS-Stile für alle Filmseiten */
+      :root {
+        --color-primary: #e94584;
+        --color-secondary: #ffd700;
+        --color-bg-dark: #0f0e17;
+        --color-bg-light: #1a1a2e;
+        --color-text-light: #ffffff;
+        --color-text-muted: #a7a9be;
+      }
+
+      body {
+        background: var(--color-bg-dark);
+        color: var(--color-text-light);
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+      }
+
+      .site-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background: var(--color-bg-dark);
+        border-bottom: 1px solid var(--color-primary);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo img {
+        height: 60px;
+      }
+
+      .logo h1 {
+        color: var(--color-primary);
+        margin: 0;
+        font-size: 1.8rem;
+      }
+
+      nav a {
+        color: var(--color-text-light);
+        text-decoration: none;
+        margin: 0 1rem;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: var(--color-primary);
+      }
+
+      /* Film Hero Section */
+      .film-hero {
+        position: relative;
+        width: 100%;
+        height: 70vh;
+        overflow: hidden;
+      }
+
+      .film-hero video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        filter: brightness(0.3);
+        transition: filter 0.5s ease;
+      }
+
+      .film-hero.playing video {
+        filter: brightness(1);
+        z-index: 3;
+      }
+
+      .film-overlay {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        height: 100%;
+        padding: 2rem;
+        color: white;
+        background: rgba(15, 14, 23, 0.6);
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+      }
+
+      .film-overlay > * {
+        pointer-events: auto;
+      }
+
+      .film-hero.playing .film-overlay {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .hero-poster {
+        width: 260px;
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+        border: 2px solid var(--color-primary);
+      }
+
+      .film-info {
+        max-width: 600px;
+      }
+
+      .film-info h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--color-primary);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .film-meta {
+        display: flex;
+        gap: 1.5rem;
+        margin: 1rem 0;
+        color: var(--color-text-muted);
+      }
+
+      .film-meta span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .film-description {
+        color: var(--color-text-light);
+        line-height: 1.6;
+        margin: 1.5rem 0;
+      }
+
+      #playBtn {
+        margin-top: 1rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        background-color: var(--color-primary);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      #playBtn:hover {
+        background-color: var(--color-primary-light);
+        transform: translateY(-2px);
+      }
+
+      /* Vorstellungen */
+      .showtimes-container {
+        max-width: 1000px;
+        margin: 3rem auto;
+        padding: 2rem;
+        background: var(--color-bg-light);
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        text-align: center;
+      }
+
+      .section-title {
+        color: var(--color-secondary);
+        font-size: 2.2rem;
+        margin-bottom: 1.2rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 3px;
+        background: var(--color-primary);
+        margin: 0.6rem auto 0;
+      }
+
+      .showtimes-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .showtime-card {
+        background: transparent;
+        border: 2px solid var(--color-primary);
+        border-radius: 12px;
+        padding: 1.2rem 2rem;
+        color: var(--color-text-light);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 150px;
+      }
+
+      .showtime-card:hover {
+        background: var(--color-primary);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(233, 69, 132, 0.4);
+      }
+
+      .showtime-date {
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+        color: var(--color-text-light);
+      }
+
+      .showtime-time {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--color-secondary);
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem;
+        margin-top: 3rem;
+        background: var(--color-bg-light);
+        color: var(--color-text-muted);
+      }
+
+      footer a {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .site-header {
+          flex-direction: column;
+          padding: 1rem;
+        }
+
+        .film-overlay {
+          flex-direction: column;
+          text-align: center;
+          padding: 1rem;
+        }
+
+        .hero-poster {
+          width: 200px;
+          margin-bottom: 1rem;
+        }
+
+        .showtimes-grid {
+          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo">
+        <img
+          src="../../img/Logo2-NoBackground-NoName.png"
+          alt="Lumen Filmhaus"
+        />
+        <h1>Lumen Filmhaus</h1>
+      </div>
+      <nav>
+        <a href="../../index.html">Home</a>
+        <a href="../programm.html">Programm</a>
+        <a href="../kontakt.html">Kontakt</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="film-hero" id="heroSection">
+        <video id="heroVideo" poster="../../img/Filme/Forrest-Gump.jpg">
+          <source src="../../VIDEO/Forrest_Gump-Trailer.mp4" type="video/mp4" />
+          Dein Browser unterstützt kein HTML5-Video.
+        </video>
+
+        <div class="film-overlay" id="heroOverlay">
+          <img
+            src="../../img/Filme/Forrest-Gump.jpg"
+            alt="Poster Forrest Gump"
+            class="hero-poster"
+          />
+          <div class="film-info">
+            <h1>Forest Gump</h1>
+            <div class="film-meta">
+              <span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
+                  />
+                  <path d="M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
+                </svg>
+                142 Minuten
+              </span>
+              <span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M7,7V9H9V7H7M11,7V9H13V7H11M15,7V9H17V7H15M7,11V13H9V11H7M11,11V13H13V11H11M15,11V13H17V11H15M7,15V17H9V15H7M11,15V17H13V15H11M15,15V17H17V15H15Z"
+                  />
+                </svg>
+                Komödie/Romanze
+              </span>
+              <span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z"
+                  />
+                </svg>
+                FSK 12
+              </span>
+            </div>
+            <p class="film-description">
+              Der gutmütige, leicht gehbehinderte und mit einem IQ von nur 75
+              ausgestattete Forrest Gump schlägt sich auf bemerkenswerte Weise
+              durch 40 Jahre amerikanische Geschichte. Er macht Karriere als
+              Football-Spieler, Langstreckenläufer, dekorierter Vietnam-Held und
+              Tischtennis-Profi. Als Unternehmer wird er zum Millionär. Ganz
+              nebenbei erfindet er Elvis Presleys berühmten Hüftschwung und
+              deckt, ohne es zu wissen, den Watergate-Skandal auf. Doch all die
+              Zeit denkt er an seine große Liebe Jenny.
+            </p>
+            <button id="playBtn">▶ Trailer ansehen</button>
+          </div>
+        </div>
+      </div>
+      <div class="showtimes-container">
+        <h2 class="section-title">Vorstellungen</h2>
+        <div class="showtimes-grid">
+          <div
+            class="showtime-card"
+            onclick="location.href='../reservation.html?filmId=8&vorstellungId=8'"
+          >
+            <div class="showtime-date">DO, 22. Mai</div>
+            <div class="showtime-time">22:00 Uhr</div>
+          </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2023 Lumen Filmhaus. Alle Rechte vorbehalten.</p>
+      <p>
+        <a href="../impressum.html">Impressum</a> |
+        <a href="../datenschutz.html">Datenschutz</a>
+      </p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const video = document.getElementById("heroVideo");
+        const hero = document.getElementById("heroSection");
+        const playBtn = document.getElementById("playBtn");
+        const overlay = document.getElementById("heroOverlay");
+
+        // Play-Button Handler
+        playBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (video.paused) {
+            video.play();
+            hero.classList.add("playing");
+            playBtn.textContent = "❚❚ Pause";
+          } else {
+            video.pause();
+            hero.classList.remove("playing");
+            playBtn.textContent = "▶ Trailer ansehen";
+          }
+        });
+
+        // Video-Klick-Handler
+        video.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (!video.paused) {
+            video.pause();
+            hero.classList.remove("playing");
+            playBtn.textContent = "▶ Trailer ansehen";
+          }
+        });
+
+        // Video-Ende-Handler
+        video.addEventListener("ended", () => {
+          hero.classList.remove("playing");
+          video.currentTime = 0;
+          playBtn.textContent = "▶ Trailer ansehen";
+        });
+
+        // Overlay-Klick-Handler
+        overlay.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+      });
+    </script>
+  </body>
+</html>
