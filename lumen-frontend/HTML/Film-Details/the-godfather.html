@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Godfather – Lumen Filmhaus</title>
     <link rel="stylesheet" href="../../CSS/style.css" />
+        <link rel="icon" type="image/x-icon" href="../../img/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      /* Gemeinsame CSS-Stile für alle Filmseiten */
-      :root {
+/* Gemeinsame CSS-Stile für alle Filmseiten */
+     :root {
         --color-primary: #e94584;
+        --color-primary-light: #ff6b9e;
         --color-secondary: #ffd700;
         --color-bg-dark: #0f0e17;
         --color-bg-light: #1a1a2e;
         --color-text-light: #ffffff;
         --color-text-muted: #a7a9be;
+        --color-border: #2e2e48;
       }
 
       body {
@@ -22,43 +26,20 @@
         margin: 0;
         font-family: "Arial", sans-serif;
         line-height: 1.6;
+        overflow-x: hidden;
       }
 
-      .site-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        background: var(--color-bg-dark);
-        border-bottom: 1px solid var(--color-primary);
-      }
 
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .logo img {
-        height: 60px;
-      }
-
-      .logo h1 {
-        color: var(--color-primary);
-        margin: 0;
-        font-size: 1.8rem;
-      }
-
-      nav a {
+      /* Mobile Menu Toggle */
+      #menu-toggle {
+        display: none;
+        background: none;
+        border: none;
         color: var(--color-text-light);
-        text-decoration: none;
-        margin: 0 1rem;
-        font-weight: 500;
-        transition: color 0.3s;
-      }
-
-      nav a:hover {
-        color: var(--color-primary);
+        font-size: 1.8rem;
+        cursor: pointer;
+        z-index: 1001;
+        padding: 0.5rem;
       }
 
       /* Film Hero Section */
@@ -66,6 +47,7 @@
         position: relative;
         width: 100%;
         height: 70vh;
+        min-height: 500px;
         overflow: hidden;
       }
 
@@ -91,6 +73,7 @@
         z-index: 2;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 2rem;
         height: 100%;
         padding: 2rem;
@@ -111,6 +94,7 @@
 
       .hero-poster {
         width: 260px;
+        max-width: 100%;
         border-radius: 8px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
         border: 2px solid var(--color-primary);
@@ -129,7 +113,8 @@
 
       .film-meta {
         display: flex;
-        gap: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
         margin: 1rem 0;
         color: var(--color-text-muted);
       }
@@ -138,6 +123,7 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        white-space: nowrap;
       }
 
       .film-description {
@@ -161,6 +147,7 @@
       #playBtn:hover {
         background-color: var(--color-primary-light);
         transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(233, 69, 132, 0.4);
       }
 
       /* Vorstellungen */
@@ -232,7 +219,6 @@
       footer {
         text-align: center;
         padding: 2rem;
-        margin-top: 3rem;
         background: var(--color-bg-light);
         color: var(--color-text-muted);
       }
@@ -245,47 +231,197 @@
       footer a:hover {
         text-decoration: underline;
       }
+      #menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--color-text-light);
+      font-size: 2rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
 
-      @media (max-width: 768px) {
-        .site-header {
-          flex-direction: column;
+    #menu-toggle:hover {
+      color: var(--color-secondary);
+    }
+
+      /* Mobile Navigation */
+    @media (max-width: 768px) {
+
+      .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  #menu-toggle {
+    display: block;
+    align-self: flex-end;
+    margin: 0.5rem 1rem 0 0;
+  }
+
+  #main-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--color-bg-dark);
+    z-index: 999;
+    border-top: 1px solid var(--color-primary);
+    padding: 1rem;
+    height: calc(100vh - 80px); /* Vollhöhe abzüglich Headerhöhe */
+    overflow-y: auto;
+  }
+
+  #main-nav.active {
+    display: flex;
+  }
+
+  #main-nav a {
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--color-text-light);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  #main-nav a:hover {
+    background: var(--color-bg-light);
+    color: var(--color-secondary);
+  }
+    .film-hero {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      min-height: unset;
+      max-height: unset;
+      aspect-ratio: unset;
+    }
+    .film-hero video {
+    width: 100vw; /* gesamte Viewport-Breite */
+    height: auto;
+    max-height: 360px; /* oder was du willst */
+    object-fit: contain; /* statt cover, damit nichts abgeschnitten wird */
+    display: block;
+  }
+
+    .film-overlay {
+      flex-direction: column;
+      padding: 1rem;
+      text-align: center;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-poster {
+      width: 80%;
+      max-width: 240px;
+      margin: 0 auto;
+    }
+
+    .film-info h1 {
+      font-size: 1.6rem;
+    }
+
+    .film-meta {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .film-description {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    #playBtn {
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
+    }
+}
+
+      @media (max-width: 480px) {
+        .logo h1 {
+          font-size: 1.2rem;
+        }
+
+        .film-info h1 {
+          font-size: 1.8rem;
+        }
+
+        .film-meta span {
+          font-size: 0.9rem;
+        }
+
+        .film-description {
+          font-size: 0.95rem;
+        }
+
+        .showtimes-container {
           padding: 1rem;
         }
 
-        .film-overlay {
-          flex-direction: column;
-          text-align: center;
-          padding: 1rem;
+        .section-title {
+          font-size: 1.5rem;
         }
 
-        .hero-poster {
-          width: 200px;
-          margin-bottom: 1rem;
+        .showtime-card {
+          width: 100%;
+          max-width: 200px;
         }
 
-        .showtimes-grid {
-          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        .showtime-date {
+          font-size: 1rem;
         }
+
+        .showtime-time {
+          font-size: 1.2rem;
+        }
+      }
+
+      /* Menu Overlay */
+      .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+      }
+
+      .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
       }
     </style>
   </head>
   <body>
     <header class="site-header">
       <div class="logo">
-        <img
-          src="../../img/Logo2-NoBackground-NoName.png"
-          alt="Lumen Filmhaus"
-        />
-        <h1>Lumen Filmhaus</h1>
+        <a href="../../index.html" class="logo" style="text-decoration: none">
+          <img
+            src="../../img/Logo2-NoBackground-NoName.png"
+            alt="Lumen Filmhaus"
+          />
+          <h1>Lumen Filmhaus</h1>
+        </a>
       </div>
-      <nav>
+            <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
+      <nav id="main-nav">
         <a href="../../index.html">Home</a>
         <a href="../programm.html">Programm</a>
         <a href="../kontakt.html">Kontakt</a>
       </nav>
     </header>
 
-    <main>
+    <main id="Beliebt">
       <div class="film-hero" id="heroSection">
         <video id="heroVideo" poster="../../img/Filme/The_Godfather.jpg">
           <source src="../../VIDEO/DER_PATE-Trailer.mp4" type="video/mp4" />
@@ -355,14 +491,14 @@
             class="showtime-card"
             onclick="location.href='../reservation.html?filmId=2&vorstellungId=2'"
           >
-            <div class="showtime-date">DI, 20.Mai</div>
+            <div class="showtime-date">MO, 07. Juli</div>
             <div class="showtime-time">20:30 Uhr</div>
           </div>
         <div
             class="showtime-card"
             onclick="location.href='../reservation.html?filmId=2&vorstellungId=14'"
           >
-            <div class="showtime-date">SO, 25.Mai</div>
+            <div class="showtime-date">SA, 12. Juli</div>
             <div class="showtime-time">19:00 Uhr</div>
           </div>
       </div>
@@ -420,5 +556,6 @@
         });
       });
     </script>
+            <script src="../../JS/script.js"></script>
   </body>
 </html>

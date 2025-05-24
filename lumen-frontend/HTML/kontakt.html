@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kontakt – Lumen Filmhaus</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   </head>
   <body>
      <!-- Notification-Container wird hier platziert -->
@@ -14,15 +17,20 @@
     <!-- HEADER -->
     <header class="site-header">
       <div class="logo">
-        <img src="../img/Logo2-NoBackground-NoName.png" alt="Lumen Filmhaus" />
-        <h1>Lumen Filmhaus</h1>
+        <a href="../index.html" class="logo" style="text-decoration: none">
+          <img
+            src="../img/Logo2-NoBackground-NoName.png"
+            alt="Lumen Filmhaus"
+          />
+          <h1>Lumen Filmhaus</h1>
+        </a>
       </div>
-      <nav>
+            <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
+      <nav id="main-nav">
         <a href="../index.html">Home</a>
         <a href="programm.html">Programm</a>
         <a href="kontakt.html" aria-current="page">Kontakt</a>
       </nav>
-      <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
     </header>
 
     <main id="Beliebt">
@@ -75,5 +83,6 @@
      </footer>
      <script src="../js/notifications.js"></script>
     <script src="../js/kontakt.js"></script>
+        <script src="../JS/script.js"></script>
   </body>
 </html>

@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Lumen Filmhaus – Beliebt</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <!-- HEADER -->
     <header class="site-header">
       <div class="logo">
-        <img src="img/Logo2-NoBackground-NoName.png" alt="Lumen Filmhaus" />
-        <h1>Lumen Filmhaus</h1>
+        <a href="index.html" class="logo" style="text-decoration: none">
+          <img src="img/Logo2-NoBackground-NoName.png" alt="Lumen Filmhaus" />
+          <h1>Lumen Filmhaus</h1>
+        </a>
       </div>
-      <nav>
+      <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
+      <nav id="main-nav">
         <a href="index.html">Home</a>
         <a href="HTML/programm.html">Programm</a>
         <!--<a href="HTML/reservation.html">Tickets</a>-->
@@ -139,8 +144,11 @@
     <button id="to-top" aria-label="Zurück nach oben">↑</button>
   </body>
   <footer style="text-align: center">
-    <p>&copy; 2023 Lumen Filmhaus. Alle Rechte vorbehalten.</p>
-    <p>Impressum | Datenschutz</p>
+    <p>© 2023 Lumen Filmhaus. Alle Rechte vorbehalten.</p>
+    <p>
+      <a href="../impressum.html">Impressum</a> |
+      <a href="../datenschutz.html">Datenschutz</a>
+    </p>
   </footer>
   <script src="Js/api.js"></script>
   <script src="Js/home.js"></script>

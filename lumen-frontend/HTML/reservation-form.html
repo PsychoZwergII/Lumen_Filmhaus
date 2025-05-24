@@ -5,9 +5,27 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Reservierung – Lumen Filmhaus</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <header class="site-header">…</header>
+    <header class="site-header">
+      <div class="logo">
+        <a href="../index.html" class="logo" style="text-decoration: none">
+          <img
+            src="../img/Logo2-NoBackground-NoName.png"
+            alt="Lumen Filmhaus"
+          />
+          <h1>Lumen Filmhaus</h1>
+        </a>
+      </div>
+      <button id="menu-toggle" aria-label="Menü öffnen">☰</button>
+      <nav id="main-nav">
+        <a href="../index.html">Home</a>
+        <a href="programm.html">Programm</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+    </header>
     <!-- notification container -->
     <ul class="notification-container" id="notification-container"></ul>
 
@@ -54,11 +72,13 @@
     </main>
   </body>
   <footer>
-    <div class="footer-content" style="text-align: center">
-      <p>&copy; 2023 Lumen Filmhaus. Alle Rechte vorbehalten.</p>
-      <p>Impressum | Datenschutz</p>
-    </div>
+    <p>© 2023 Lumen Filmhaus. Alle Rechte vorbehalten.</p>
+    <p>
+      <a href="../impressum.html">Impressum</a> |
+      <a href="../datenschutz.html">Datenschutz</a>
+    </p>
   </footer>
   <script src="../JS/notifications.js"></script>
   <script src="../JS/reservation-form.js"></script>
+  <script src="../JS/script.js"></script>
 </html>

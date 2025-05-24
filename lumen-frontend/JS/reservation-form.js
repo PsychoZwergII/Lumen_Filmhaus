@@ -1,62 +1,3 @@
-/*// js/reservation-form.js
-const API_HOST = "http://localhost:5029";
-
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-
-  // 1) Film-ID aus Query ziehen!
-  const filmId = params.get("filmId");
-  const vorId = params.get("vorstellungId");
-  const seats = params.get("seats") || "";
-
-  // 2) Hidden-Inputs und Anzeige befüllen
-  document.getElementById("filmId").value = filmId;
-  document.getElementById("vorId").value = vorId;
-  document.getElementById("seats").value = seats;
-  document.getElementById("seat-list").textContent = seats
-    .split(",")
-    .join(", ");
-
-  const form = document.getElementById("reservation-form");
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    // 3) filmId kommt jetzt korrekt aus hidden field
-    const data = {
-      filmId: +filmId,
-      vorstellungId: +vorId,
-      sitzplaetze: seats,
-      name: form.Name.value.trim(),
-      email: form.Email.value.trim(),
-    };
-
-    try {
-      const res = await fetch(`${API_HOST}/api/Reservation`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("Konflikt");
-
-      // Erfolg
-      showNotification("success", "Deine Plätze wurden reserviert!");
-      // nach kurzer Verzögerung weiterleiten
-      setTimeout(() => {
-        window.location.href = "../index.html";
-      }, 1000);
-    } catch (err) {
-      // Fehler: mindestens ein Platz belegt
-      showNotification(
-        "error",
-        "Ein oder mehrere Plätze sind bereits belegt.",
-        6000
-      );
-      // optional: nicht automatisch zurück
-      // history.back();
-    }
-  });
-});*/
-
 // js/reservation-form.js
 const API_HOST = "http://localhost:5029";
 
@@ -136,6 +77,16 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const selectedSeats = seats.split(",").filter((s) => s.trim() !== "");
+    if (selectedSeats.length > 8) {
+      showNotification(
+        "warning",
+        "Für Gruppen ab 8 Personen bitten wir um telefonische Kontaktaufnahme.",
+        6000
+      );
+      return; // Abbrechen
+    }
+
     const data = {
       filmId: +filmId,
       vorstellungId: +vorId,
@@ -143,6 +94,28 @@ document.addEventListener("DOMContentLoaded", () => {
       name: form.Name.value.trim(),
       email: form.Email.value.trim(),
     };
+
+    // Validierung Name
+    const nameRegex = /^[A-ZÄÖÜÉÀÈ][a-zäöüéàè]+(?:\s[A-ZÄÖÜÉÀÈ][a-zäöüéàè]+)+$/;
+    if (!nameRegex.test(data.name)) {
+      showNotification(
+        "error",
+        "Bitte gib deinen vollständigen Namen im Format 'Vorname Nachname' ein.",
+        5000
+      );
+      return;
+    }
+
+    // Validierung E-Mail
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+      showNotification(
+        "error",
+        "Bitte gib eine gültige E-Mail-Adresse ein.",
+        5000
+      );
+      return;
+    }
 
     try {
       const res = await fetch(`${API_HOST}/api/Reservation`, {
@@ -152,13 +125,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       if (!res.ok) throw new Error("Konflikt");
 
-      // Erfolg!
       showNotification("success", "Deine Plätze wurden reserviert!");
       setTimeout(() => {
-        window.location.href = "../index.html";
+        window.location.href = "../HTML/erfolg.html";
       }, 1000);
     } catch (err) {
-      // Fehler
       showNotification(
         "error",
         "Ein oder mehrere Plätze sind bereits belegt.",
